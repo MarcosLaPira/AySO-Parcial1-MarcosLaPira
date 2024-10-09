@@ -1,60 +1,57 @@
+#!/bin/bash
 
-sudo fdisk /dev/sdb
-#particion 1
+# Crear particiones en /dev/sdb
+echo "Creando particiones en /dev/sdb..."
 
-n #nueva particion
-p # particion primaria
-1 # particon 1
-+2.5GB # doy tamano
+(
+echo n # Nueva partición
+echo p # Partición primaria
+echo 1 # Partición 1
+echo   # Utiliza el valor por defecto para el inicio
+echo +2.5G # Tamaño de la partición
 
+echo n # Nueva partición
+echo p # Partición primaria
+echo 2 # Partición 2
+echo   # Utiliza el valor por defecto para el inicio
+echo +2.5G # Tamaño de la partición
 
+echo n # Nueva partición
+echo p # Partición primaria
+echo 3 # Partición 3
+echo   # Utiliza el valor por defecto para el inicio
+echo +2.5G # Tamaño de la partición
 
-#particion2
+echo n # Nueva partición
+echo e # Partición extendida
+echo 4 # Partición 4 (Extendida)
+echo   # Utiliza el valor por defecto para el inicio
+echo   # Usa todo el espacio restante
 
-n #nueva particion
-p # particion primaria
-2 # particon 2
-+2.5GB # doy tamano
+echo w # Escribir los cambios
+) | sudo fdisk /dev/sdb
 
+echo "Particiones creadas exitosamente."
 
-#particion3
+# Formatear particiones como ext4
+echo "Formateando particiones como ext4..."
+sudo mkfs.ext4 /dev/sdb1
+sudo mkfs.ext4 /dev/sdb2
+sudo mkfs.ext4 /dev/sdb3
 
-n #nueva particion
-p # particion primaria
-3 # particon 3
-+2.5GB # doy tamano
+# Crear directorios de montaje
+echo "Creando directorios para montar las particiones..."
+sudo mkdir -p /mnt/part1 /mnt/part2 /mnt/part3
 
-
-#particion4
-
-
-#particion2
-
-n #nueva particion
-e # particion extendida
-4 # particon 4
-enter # doy tamano restante
-
-
-
-w #escribo cambios
-
-#formatear las particiones con ext4
-
-sudo mkfs.ext4 /dev/sdc1
-sudo mkfs.ext4 /dev/sdc2
-sudo mkfs.ext4 /dev/sdc3
-
-#creo los directorios
-
-sudo mkdir /mnt/part1
-sudo mkdir /mnt/part2
-sudo mkdir /mnt/part3
-
-#monto particiones
+# Montar particiones
+echo "Montando particiones..."
 sudo mount /dev/sdb1 /mnt/part1
 sudo mount /dev/sdb2 /mnt/part2
 sudo mount /dev/sdb3 /mnt/part3
+
+echo "Proceso completado exitosamente."
+
+
 
 
 
@@ -90,5 +87,4 @@ sdd      8:48   0    2G  0 disk
 
 
 
-:q
 

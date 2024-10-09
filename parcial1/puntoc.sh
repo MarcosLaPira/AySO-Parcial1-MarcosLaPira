@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #creo grupos
 
 sudo groupadd grupodevops

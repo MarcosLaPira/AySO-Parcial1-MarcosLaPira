@@ -1,3 +1,4 @@
+#!/bin/bash
 
 #  IP publica
 echo "Mi IP Publica:" >> Filtro_Avanzado.txt

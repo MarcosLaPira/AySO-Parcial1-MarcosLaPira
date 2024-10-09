@@ -1,3 +1,4 @@
+#!/bin/bash
 
 #memoria
  grep "MemTotal:" /proc/meminfo > repogit/Filtro_Basico.txt~

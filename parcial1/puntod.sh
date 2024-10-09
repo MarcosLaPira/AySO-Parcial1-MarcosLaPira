@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # Creo el directorio principal
 mkdir -p Estructura_Asimetrica/correo
